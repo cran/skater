@@ -1,7 +1,7 @@
-0415300573b0ff405c59d834a97f6adb *DESCRIPTION
+dfb6a7defceabcd9aacaac7a25d00831 *DESCRIPTION
 2e17a12a033da896df85b93d7741d4d8 *LICENSE
 4f06711a3908dd9e74951f04a1ca71c9 *NAMESPACE
-2e7ac411732afcaa2b7810b8791b60cd *NEWS.md
+3f0ecd1f25c13ba8142a28eedb5431cd *NEWS.md
 141f4e5c40a058e9fcf334c9ebfc612e *R/confusion_matrix.R
 1ebc332dc571dcab8e34576b1fb92752 *R/ibd.R
 45942582f17ec51c6a9228273b55f1ba *R/ped.R
@@ -9,11 +9,11 @@
 76574e32e8cee508757b4be3aeb82a48 *R/skater-package.R
 4e50b183bef56de3ffb39547b0648832 *R/utils-pipe.R
 ccfc442a8632ae43b42e55cbb96ecc99 *R/utils.R
-02cad94414d979a39eb6d980212db789 *README.md
+dda74f419c034195fb57d396e1f7eb0d *README.md
 314b845f86ab6077fdbf9410f994be78 *build/vignette.rds
-dac280e9004f026efa1ee64b504323d1 *inst/doc/basic_usage.R
-83c3e6773618e0d5fd76b45bf06cc760 *inst/doc/basic_usage.Rmd
-2ecc501517e9e919e1239abcfc684eab *inst/doc/basic_usage.html
+97b08e04af48ba57e6146f806abe553e *inst/doc/basic_usage.R
+6fd43fc48ca4d3bb74292cdd3969c85b *inst/doc/basic_usage.Rmd
+efccb5dedfead5e33d46d468fdcadfbc *inst/doc/basic_usage.html
 a6f68457bb6f02db26d328ebf35dceb3 *inst/extdata/3gens.akt
 5efeb16b8d399efc56bf0a6c8868f2d4 *inst/extdata/3gens.fam
 62e6a9fcbc94d340d5a459d0d20def08 *inst/extdata/3gens.ibis.coef
@@ -43,7 +43,7 @@ bbaa17ef3d6e08b8670d1166885dbb28 *man/plot_pedigree.Rd
 a41557f52c2e126791382044fed5a76e *man/read_ibis.Rd
 b5b88d34b05cd9b8027860c18c7c2828 *man/read_map.Rd
 c71d905ac16a013bcc67f6bf7f66b3b4 *man/read_plink2_king.Rd
-89701856fcb54799ca76aee449296021 *man/skater-package.Rd
+488512b39ee2125674579926af5f2b21 *man/skater-package.Rd
 751b8aee9716b7e1fecea6370c6e493d *tests/testthat.R
 40945dfc623276c4a2a0dbcd20052c5b *tests/testthat/test-skater.R
-83c3e6773618e0d5fd76b45bf06cc760 *vignettes/basic_usage.Rmd
+6fd43fc48ca4d3bb74292cdd3969c85b *vignettes/basic_usage.Rmd
