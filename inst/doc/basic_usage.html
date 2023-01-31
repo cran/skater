@@ -14,25 +14,38 @@
 
 <title>Basic Usage</title>
 
-<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
 
 <style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
 
 
 <style type="text/css">
-  code {
-    white-space: pre;
-  }
-  .sourceCode {
-    overflow: visible;
-  }
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
@@ -50,55 +63,54 @@ pre > code.sourceCode { white-space: pre-wrap; }
 pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
-  { counter-reset: source-line 0; }
+{ counter-reset: source-line 0; }
 pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
+{ position: relative; left: -4em; counter-increment: source-line; }
 pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {   }
+{ }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -107,13 +119,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -125,7 +144,187 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -142,23 +341,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="TOC">
 <ul>
-<li><a href="#overview">Overview</a></li>
-<li><a href="#pedigree-parsing-and-manipulation">Pedigree parsing and manipulation</a></li>
-<li><a href="#degree-inference">Degree Inference</a></li>
-<li><a href="#benchmarking-degree-classification">Benchmarking Degree Classification</a></li>
-<li><a href="#ibd-segment-analysis">IBD Segment Analysis</a></li>
+<li><a href="#overview" id="toc-overview">Overview</a></li>
+<li><a href="#pedigree-parsing-and-manipulation" id="toc-pedigree-parsing-and-manipulation">Pedigree parsing and
+manipulation</a></li>
+<li><a href="#degree-inference" id="toc-degree-inference">Degree
+Inference</a></li>
+<li><a href="#benchmarking-degree-classification" id="toc-benchmarking-degree-classification">Benchmarking Degree
+Classification</a></li>
+<li><a href="#ibd-segment-analysis" id="toc-ibd-segment-analysis">IBD
+Segment Analysis</a></li>
 </ul>
 </div>
 
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>The <code>skater</code> package provides a collection of analysis and utility functions for <strong>S</strong>NP-based <strong>k</strong>inship <strong>a</strong>nalysis, <strong>t</strong>esting, and <strong>e</strong>valuation as an <strong>R</strong> package. Functions in the package include tools for working with pedigree data, performing relationship degree inference, assessing classification accuracy, and summarizing IBD segment data.</p>
+<p>The <code>skater</code> package provides a collection of analysis and
+utility functions for <strong>S</strong>NP-based
+<strong>k</strong>inship <strong>a</strong>nalysis,
+<strong>t</strong>esting, and <strong>e</strong>valuation as an
+<strong>R</strong> package. Functions in the package include tools for
+working with pedigree data, performing relationship degree inference,
+assessing classification accuracy, and summarizing IBD segment data.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skater)</span></code></pre></div>
 </div>
 <div id="pedigree-parsing-and-manipulation" class="section level2">
 <h2>Pedigree parsing and manipulation</h2>
-<p>Pedigrees define familial relationships in a hierarchical structure.</p>
-<p>One of the formats used by PLINK and other genetic analysis tools is the <code>.fam</code> file.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> A <code>.fam</code> file is a tabular format with one row per individual and columns for unique IDs of the mother, father, and the family unit. The package includes <code>read_fam()</code> to read files in this format:</p>
+<p>Pedigrees define familial relationships in a hierarchical
+structure.</p>
+<p>One of the formats used by PLINK and other genetic analysis tools is
+the <code>.fam</code> file.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> A <code>.fam</code> file is a tabular
+format with one row per individual and columns for unique IDs of the
+mother, father, and the family unit. The package includes
+<code>read_fam()</code> to read files in this format:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>famfile <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;3gens.fam&quot;</span>, <span class="at">package=</span><span class="st">&quot;skater&quot;</span>, <span class="at">mustWork=</span><span class="cn">TRUE</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>fam <span class="ot">&lt;-</span> <span class="fu">read_fam</span>(famfile)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>fam</span>
@@ -176,7 +390,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#  9 testped2 testped2_g1-b1-s1 0                 0                     2        1</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 10 testped2 testped2_g1-b1-i1 0                 0                     1        1</span></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># # … with 54 more rows</span></span></code></pre></div>
-<p>Family structures imported from “.fam” formated files can then be translated to the <code>pedigree</code> structure used by the <code>kinship2</code> package.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> The “fam” format may include multiple families, and the <code>fam2ped()</code> function will collapse them all into a <code>tibble</code> with one row per family:</p>
+<p>Family structures imported from “.fam” formated files can then be
+translated to the <code>pedigree</code> structure used by the
+<code>kinship2</code> package.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> The “fam” format may include multiple
+families, and the <code>fam2ped()</code> function will collapse them all
+into a <code>tibble</code> with one row per family:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>peds <span class="ot">&lt;-</span> <span class="fu">fam2ped</span>(fam)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>peds</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # A tibble: 8 × 3</span></span>
@@ -190,21 +408,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 6 testped6 &lt;tibble [8 × 5]&gt; &lt;pedigree&gt;</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 7 testped7 &lt;tibble [8 × 5]&gt; &lt;pedigree&gt;</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 8 testped8 &lt;tibble [8 × 5]&gt; &lt;pedigree&gt;</span></span></code></pre></div>
-<p>In the example above, the resulting <code>tibble</code> is nested by family ID. The <code>data</code> column contains the individual family information, while the <code>ped</code> column contains the pedigree object for that family. You can unnest any particular family:</p>
+<p>In the example above, the resulting <code>tibble</code> is nested by
+family ID. The <code>data</code> column contains the individual family
+information, while the <code>ped</code> column contains the pedigree
+object for that family. You can unnest any particular family:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>peds <span class="sc">%&gt;%</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(fid<span class="sc">==</span><span class="st">&quot;testped1&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unnest</span>(<span class="at">cols=</span>data)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># # A tibble: 8 × 7</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   fid      id                dadid             momid        sex affected ped    </span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   &lt;chr&gt;    &lt;chr&gt;             &lt;chr&gt;             &lt;chr&gt;      &lt;int&gt;    &lt;dbl&gt; &lt;list&gt; </span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 testped1 testped1_g1-b1-s1 &lt;NA&gt;              &lt;NA&gt;           1        1 &lt;pedig…</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 testped1 testped1_g1-b1-i1 &lt;NA&gt;              &lt;NA&gt;           2        1 &lt;pedig…</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3 testped1 testped1_g2-b1-s1 &lt;NA&gt;              &lt;NA&gt;           1        1 &lt;pedig…</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 4 testped1 testped1_g2-b1-i1 testped1_g1-b1-s1 testped1_…     2        1 &lt;pedig…</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 5 testped1 testped1_g2-b2-s1 &lt;NA&gt;              &lt;NA&gt;           1        1 &lt;pedig…</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 6 testped1 testped1_g2-b2-i1 testped1_g1-b1-s1 testped1_…     2        1 &lt;pedig…</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 7 testped1 testped1_g3-b1-i1 testped1_g2-b1-s1 testped1_…     2        1 &lt;pedig…</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 8 testped1 testped1_g3-b2-i1 testped1_g2-b2-s1 testped1_…     1        1 &lt;pedig…</span></span></code></pre></div>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   fid      id                dadid             momid      sex affec…¹ ped       </span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   &lt;chr&gt;    &lt;chr&gt;             &lt;chr&gt;             &lt;chr&gt;    &lt;int&gt;   &lt;dbl&gt; &lt;list&gt;    </span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 testped1 testped1_g1-b1-s1 &lt;NA&gt;              &lt;NA&gt;         1       1 &lt;pedigree&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 testped1 testped1_g1-b1-i1 &lt;NA&gt;              &lt;NA&gt;         2       1 &lt;pedigree&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3 testped1 testped1_g2-b1-s1 &lt;NA&gt;              &lt;NA&gt;         1       1 &lt;pedigree&gt;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 4 testped1 testped1_g2-b1-i1 testped1_g1-b1-s1 testped…     2       1 &lt;pedigree&gt;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 5 testped1 testped1_g2-b2-s1 &lt;NA&gt;              &lt;NA&gt;         1       1 &lt;pedigree&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 6 testped1 testped1_g2-b2-i1 testped1_g1-b1-s1 testped…     2       1 &lt;pedigree&gt;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 7 testped1 testped1_g3-b1-i1 testped1_g2-b1-s1 testped…     2       1 &lt;pedigree&gt;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 8 testped1 testped1_g3-b2-i1 testped1_g2-b2-s1 testped…     1       1 &lt;pedigree&gt;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># # … with abbreviated variable name ¹​affected</span></span></code></pre></div>
 <p>You can also look at a single pedigree:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>peds<span class="sc">$</span>ped[[<span class="dv">1</span>]]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Pedigree object with 8 subjects</span></span>
@@ -212,9 +434,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Or plot that pedigree:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(peds<span class="sc">$</span>ped[[<span class="dv">1</span>]], <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">4</span>))</span></code></pre></div>
 <p><img src="data:image/png;base64,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goJXv/rV6eCDD07LLrts23lMQGCmCHgGYKa0lOUkQIAAAQIEOhb405/+lJ7znOekvffeO919991TOvmPQh544IF0//33px//+MdFt6Cjjjqq47LNQGBQBQQAg9oylosAAQIECBCYlsAZZ5yRXvjCF6a///3v6d577+0qr4cffrjoFvTOd74zfeITn+gqDzMRGDQBDwEPWotYHgIECBAgQGDaAvFw78Ybb1x0+Zl2Zv/N4POf/3yKgOBzn/tcr7KUD4FKBNwBqIRdoQQIECBAgEC/BG688ca00kor9fTkP5Y1Tv7jWYLvfve7/Vp0+RIoRUAAUAqzQggQIECAAIGyBHbeeediWM9+lBddiXbZZZd088039yN7eRIoRUAAUAqzQggQIECAAIEyBM4666wUff8feeSRvhUXeX/2s5/tW/4yJtBvAQFAv4XlT4AAAQIECJQmcMABBxQP7fazwBgh6Mgjj+z6weJ+Lpu8CUxFQAAwFSXTECBAgAABAgMvEOP9x3sqynjHabw5+NRTTx14EwtIYDwBAcB4Kr4jQIAAAQIEZpzAmWeemRZeeOFSlvuuu+5Kp59+eillKYRArwUEAL0WlR8BAgQIECBQicDVV1+d4i5AWencc88tqyjlEOipgPcA9JRTZgQIEBhugRgG8ZRTTkmXX375cFe0pNpdccUVaamllir+K6nIoS7m5z//efH23rIqefvtt5dVlHII9FRAANBTTpkRIEBguAUeffTRdOGFFxZvVh3umpZTuxitZvnlly/+K6fE4S7l+uuvL7WC/RxpqNSKKKx2AgKA2jW5ChMgQKB7gTlz5qS99947rbvuut1nYs4Rga233jptu+226Q1veMPIdz50L/DFL34x7bXXXumhhx7qPpMO5pw7d24HU5uUwOAIeAZgcNrCkhAgQIAAAQLTEFhhhRXSIossMo0cOpt19dVX72wGUxMYEAEBwIA0hMUgQIAAAQIEpifwkpe8pLSx+RdddNEU5UkEZqKAAGAmtpplJkCAAAECBOYRWHLJJdMqq6wyz/f9+CL6/2+zzTb9yFqeBPouIADoO7ECCBAgQIAAgbIE9txzz/S4xz2ur8XNP//8adNNN01PeMIT+lqOzAn0S0AA0C9Z+RIgQIAAAQKlC8RD1csss0xfy11ooYXS/vvv39cyZE6gnwICgH7qypsAAQIECBAoVWC++eZLxx13XN8eBo6+/+9973uTB4BLbVaF9VhAANBjUNkRIECAAAEC1Qqsv/766bOf/WyaNWtWTxdkgQUWSGussUbad999e5qvzAiULSAAKFtceQQIECBAgEDfBXbfffd01FFHpbhi34u02GKLpWc/+9nprLPOShEISARmsoAAYCa3nmUnQIAAAQIEJhTYYYcd0kEHHVR0B4oHd7tN8W6BzTffPF100UU9v6vQ7TKZj8B0BAQA09EzLwECBAgQIDDQAjvvvHO65JJL0kYbbVTcDYhnBKaaYjShJz3pSen4449PP/jBD9KCCy441VlNR2CgBaa+FQx0NSwcAQIE6itw5513llb5hx56qLSyFESgVwLPetaz0q9//eviv6233rq4IzB37twU3XpanxOYM2dOiu/jRD+eI/jKV76Srr/++vTqV7+6V4siHwIDITB7IJbCQhAgQIBAVwJrrbVWOvDAA9Pf/va3rubvdKbll18+rb322p3OZnoCAyGw3nrrpe9///vpscceSxdeeGG64oor0nXXXZfuueeeFEN7PvnJT04rr7xyiu0qAgGJwLAKCACGtWXViwCBWghEd4YPfvCDtairShLolUBsN+uuu27xX6/ylA+BmSSgC9BMai3LSoAAAQIECBAgQGCaAgKAaQKanQABAgQIECBAgMBMEhAAzKTWsqwECBAgQIAAAQIEpikgAJgmoNkJECBAgAABAgQIzCQBAcBMai3LSoAAAQIECBAgQGCaAgKAaQKanQABAoMm8Oijj6ayxuuPcqK8fqR+5V2mTz9c5NmdQL/Wp/GWpp9l9Srv+++/f7xF911NBAQANWlo1SRA4H8Ct9xySzrmmGP+90UPPsW44vHSoAceeKAHubXPYv75509f/epX55kwlmOLLbZI8fbTfqcYP33ZZZdNv/jFL9oWdeqppxYvXIqXKk0ldZL3VPJrTlOmT7PMmfLvMG8X/VqfxmvbTsraYYcdUrybYKqpk7xPO+20Ypu79tpr58n+6KOPTksttdQ83/uiPgICgPq0tZoSIPBfgV122SWdcMIJPfWI/N7znvf07Wr4VBb2wQcfTO9617tSnGz3O8VJRQQat956a8+L6lfeZfr0HKWEDId1u+jX+jRek/SzrE7zXm655dL222+fHve4x41a1JNOOqnYVzUajVHf+6NeAgKAerW32hIgkAXiKvCsWbN6ahF5VpkuuuiitOaaa6YTTzwxPfGJT+zronz5y19Oq6++enrkkUd6Xk6/8i7Tp+coJWU4jNtFv9an8Zqkn2V1k/cqq6ySvvGNb6Sll166WNw777wzbbfddun1r399WmGFFcargu9qJCAAqFFjqyoBAintvvvu6Ywzzkhnn312WnvttdO//vWvguXee+8trorFgTEOmFtuuWVq7a5y1113FVfTnvSkJ6Ull1wyvfSlL03nn39+Me9PfvKT9PGPf7z4vOGGG6bjjjuu+LzRRhulH//4x8VBN263x29jux61Kzcy+vvf/56iq0CUvdZaa6W4tT82HXXUUSmu+F188cVpxRVXHPvzlP8+5ZRT0itf+cqiji972cvSmWeeWTj97W9/G8lj//33T7vttlv6+c9/PvLdVD9ccsklaf3110+LL7542mSTTdKll146atZu844TpGc/+9lp0UUXTWussUY65JBDRuXbK59RmQ7RHxNtF9E+m222WbE+PPOZz0x77bVXevjhh0dq3ul2cd555xXr04UXXphe8IIXFN1Q3vjGN6ZYL1pTr7aLbten1mWJz/3eLo444oi00korFdtw3Im57777Ri1CN/WI/VPs4/75z38WecW+IfZ7P/rRj1KU0euLIKMW2B+DL5BvAUkECBCojcCvfvWrxvOf//xGvoLd+OY3v9m4++67G/nKZyOflDbySXrjYx/7WCNfRW+86EUvauQr6Y3bbrutsHnb297WeOpTn9o4/PDDG9///vcbL3nJSxoLLbRQI/ebblx11VWNfECN++mN3C+/8ec//7mY5/GPf3wjn+g2tt1228Zvf/vbxt57793IffcbP/3pT4vfp1Ju7rbSyAfxxmqrrdY4/vjjG4ceemixnFFWfuZgpN3+/e9/j3yOurz97W8f+XuqH/JJWFGnt771rY0cuDTe+973NvIJdVGvyy67bCSbZln/+Mc/it9+9rOfjfw20YccLBTTLrLIIo199923kU9CGjkgauTuCY0bbrhhZLZu8g7P8PjoRz9aLPcee+xR/B3t20zNfOPvbn2aefXy3ze84Q3F+tbLPLvJa7zt4vLLL28svPDCxfaS+4w3cpDVyMFv481vfvNIEZ1uF/l5kaJtYtv64he/2Pj1r3/d2HzzzYttK3cnK/Ltx3bRybo6Urn/fujndpG76DQWWGCBRr7w0PjO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FgECBAgQIECAAIGKBQQAFTeA4gkQIECAAAECBAiUKSAAKFNbWQQIECBAgAABAgQqFhAAVNwAiidAgAABAgQIECBQpoAAoExtZREgQIAAAQIECBCoWEAAUHEDKJ4AAQIECBAgQIBAmQICgDK1lUWAAAECBAgQIECgYgEBQMUNoHgCBAgQIECAAAECZQoIAMrUVhYBAgQIECBAgACBigUEABU3gOIJECBAgAABAgQIlCkgAChTW1kECBAgQIAAAQIEKhYQAFTcAIonQIAAAQIECBAgUKaAAKBMbWURIECAAAECBAgQqFhAAFBxAyieAAECBAgQIECAQJkCAoAytZVFgAABAgQIECBAoGIBAUDFDaB4AgQIECBAgAABAmUKCADK1FYWAQIECBAgQIAAgYoFBAAVN4DiCRAgQIAAAQIECJQpIAAoU1tZBAgQIECAAAECBCoWEABU3ACKJ0CAAAECBAgQIFCmgACgTG1lESBAgAABAgQIEKhYQABQcQMongABAgQIECBAgECZAgKAMrWVRYAAAQIECBAgQKBiAQFAxQ2geAIECBAgQIAAAQJlCggAytRWFgECBAgQIECAAIGKBQQAFTeA4gkQIECAAAECBAiUKSAAKFNbWQQIECBAgAABAgQqFhAAVNwAiidAgAABAgQIECBQpoAAoExtZREgQIAAAQIECBCoWEAAUHEDKJ4AAQIECBAgQIBAmQICgDK1lUWAAAECBAgQIECgYgEBQMUNoHgCBAgQIECAAAECZQoIAMrUVhYBAgQIECBAgACBigUEABU3gOIJECBAgAABAgQIlCkgAChTW1kECBAgQIAAAQIEKhYQAFTcAIonQIAAAQIECBAgUKaAAKBMbWURIECAAAECBAgQqFhAAFBxAyieAAECBAgQIECAQJkCAoAytZVFgAABAgQIECBAoGIBAUDFDaB4AgQIECBAgAABAmUKCADK1FYWAQIECBAgQIAAgYoFBAAVN4DiCRAgQIAAAQIECJQpIAAoU1tZBAgQIECAAAECBCoWEABU3ACKJ0CAAAECBAgQIFCmgACgTG1lESBAgAABAgQIEKhYQABQcQMongABAgQIECBAgECZAgKAMrWVRYAAAQIECBAgQKBiAQFAxQ2geAIECBAgQIAAAQJlCggAytRWFgECBAgQIECAAIGKBQQAFTeA4gkQIECAAAECBAiUKSAAKFNbWQQIECBAgAABAgQqFhAAVNwAiidAgAABAgQIECBQpoAAoExtZREgQIAAAQIECBCoWEAAUHEDKJ4AAQIECBAgQIBAmQICgDK1lUWAAAECBAgQIECgYgEBQMUNoHgCBAgQIECAAAECZQoIAMrUVhYBAgQIECBAgACBigUEABU3gOIJECBAgAABAgQIlCkgAChTW1kECBAgQIAAAQIEKhYQAFTcAIonQIAAAQIECBAgUKaAAKBMbWURIECAAAECBAgQqFhAAFBxAyieAAECBAgQIECAQJkCAoAytZVFgAABAgQIECBAoGIBAUDFDaB4AgQIECBAgAABAmUKCADK1FYWAQIECBAgQIAAgYoFBAAVN4DiCRAgQIAAAQIECJQpIAAoU1tZBAgQIECAAAECBCoWEABU3ACKJ0CAAAECBAgQIFCmgACgTG1lESBAgAABAgQIEKhYQABQcQMongABAgQIECBAgECZAgKAMrWVRYAAAQIECBAgQKBiAQFAxQ2geAIECBAgQIAAAQJlCggAytRWFgECBAgQIECAAIGKBQQAFTeA4gkQIECAAAECBAiUKSAAKFNbWQQIECBAgAABAgQqFhAAVNwAiidAgAABAgQIECBQpoAAoExtZREgQIAAAQIECBCoWEAAUHEDKJ4AAQIECBAgQIBAmQICgDK1lUWAAAECBAgQIECgYgEBQMUNoHgCBAgQIECAAAECZQoIAMrUVhYBAgQIECBAgACBigUEABU3gOIJECBAgAABAgQIlCkgAChTW1kECBAgQIAAAQIEKhYQAFTcAIonQIAAAQIECBAgUKaAAKBMbWURIECAAAECBAgQqFhAAFBxAyieAAECBAgQIECAQJkCAoAytZVFgAABAgQIECBAoGIBAUDFDaB4AgQIECBAgAABAmUKCADK1FYWAQIECBBoEbjhhhvSP//5z5ZvfCRAgED/BQQA/TdWAgECBAgQGFeg0Wikxx57bNzffEmAAIF+CQgA+iUrXwIECBAg0EbgqU99aor/JAIECJQpIAAoU1tZBAgQIECAAAECBCoWEABU3ACKJ0CAAAECBAgQIFCmgACgTG1lESBAgAABAgQIEKhYQABQcQMongABAgQIECBAgECZAgKAMrWVRYAAAQIECBAgQKBiAQFAxQ2geAIECBAgQIAAAQJlCggAytRWFgECBAgQIECAAIGKBQQAFTeA4gkQIECAAAECBAiUKSAAKFNbWQQIECBAgAABAgQqFhAAVNwAiidAgAABAgQIECBQpoAAoExtZREgQIAAAQIECBCoWEAAUHEDKJ4AAQIECBAgQIBAmQICgDK1lUWAAAECBAgQIECgYgEBQMUNoHgCBAgQIECAAAECZQoIAMrUVhYBAgQIECBAgACBigUEABU3gOIJECBAgAABAgQIlCkgAChTW1kECBAgQIAAAQIEKhYQAFTcAIonQIAAAQIECBAgUKaAAKBMbWURIECAAAECBAgQqFhAAFBxAyieAAECBAgQIECAQJkCAoAytZVFgAABAgQIECBAoGIBAUDFDaB4AgQIECBAgAABAmUKCADK1FYWAQIECBAgQIAAgYoFBAAVN4DiCRAgQIAAAQIECJQpIAAoU1tZBAgQIECAAAECBCoWEABU3ACKJ0CAAAECBAgQIFCmgACgTG1lESBAgAABAgQIEKhYQABQcQMongABAgQIECBAgECZAgKAMrWVRYAAAQIECBAgQKBiAQFAxQ2geAIECBAgQIAAAQJlCggAytRWFgECBAgQIECAAIGKBQQAFTeA4gkQIECAAAECBAiUKSAAKFNbWQQIECBAgAABAgQqFhAAVNwAiidAgAABAgQIECBQpoAAoExtZREgQIAAAQIECBCoWEAAUHEDKJ4AAQIECBAgQIBAmQICgDK1lUWAAAECBAgQIECgYgEBQMUNoHgCBAgQIECAAAECZQoIAMrUVhYBAgQIECBAgACBigUEABU3gOIJECBAgAABAgQIlCkgAChTW1kECBAgQIAAAQIEKhYQAFTcAIonQIAAAQIECBAgUKaAAKBMbWURIECAAAECBAgQqFhAAFBxAyieAAECBAgQIECAQJkCAoAytZVFgAABAgQIECBAoGIBAUDFDaB4AgQIECBAgAABAmUKCADK1FYWAQIECBAgQIAAgYoFBAAVN4DiCRAgQIAAAQIECJQpIAAoU1tZBAgQIECAAAECBCoWEABU3ACKJ0CAAAECBAgQIFCmgACgTG1lESBAgAABAgQIEKhYQABQcQMongABAgQIECBAgECZAgKAMrWVRYAAAQIECBAgQKBiAQFAxQ2geAIECBAgQIAAAQJlCggAytRWFgECBAgQIECAAIGKBQQAFTeA4gkQIECAAAECBAiUKSAAKFNbWQQIECBAgAABAgQqFhAAVNwAiidAgAABAgQIECBQpoAAoExtZREgQIAAAQIECBCoWEAAUHEDKJ4AAQIECBAgQIBAmQICgDK1lUWAAAECBAgQIECgYgEBQMUNoHgCBAgQIECAAAECZQoIAMrUVhYBAgQIECBAgACBigUEABU3gOIJECBAgAABAgQIlCkgAChTW1kECBAgQIAAAQIEKhYQAFTcAIonQIAAAQIECBAgUKaAAKBMbWURIECAAAECBAgQqFhAAFBxAyieAAECBAgQIECAQJkCAoAytZVFgAABAgQIECBAoGIBAUDFDaB4AgQIECBAgAABAmUKCADK1FYWAQIECBAgQIAAgYoFBAAVN4DiCRAgQIAAAQIECJQpIAAoU1tZBAgQIECAAAECBCoWEABU3ACKJ0CAAAECBAgQIFCmgACgTG1lESBAgAABAgQIEKhYQABQcQMongABAgQIECBAgECZAgKAMrWVRYAAAQIECBAgQKBiAQFAxQ2geAIECBAgQIAAAQJlCswuszBlESBA4I477kg33nhjWnzxxWEQqL3A/fffn2677bZim6g9BoDaC9x0001pzTXXrL1DGQCzGjmVUZAyCBAgEAIf/ehH08EHH5yWXHJJIARqLxAB8Zw5c4r/ao8BoNYCcTr6r3/9KzktLWc1cAegHGelECDwX4G11lorvfrVr04nnngiEwIECBAgUAjEif/8889PoyQBzwCUBK0YAgQIECBAgAABAoMgIAAYhFawDAQIECBAgAABAgRKEhAAlAStGAIECBAgQIAAAQKDICAAGIRWsAwECBAgQIAAAQIEShIQAJQErRgCBAgQIECAAAECgyAgABiEVrAMBAgQIECAAAECBEoSEACUBK0YAgQIECBAgAABAoMgIAAYhFawDAQIECBAgAABAgRKEhAAlAStGAIECBAgQIAAAQKDICAAGIRWsAwECBAgQIAAAQIEShIQAJQErRgCBAgQIECAAAECgyAgABiEVrAMBAgQIECAAAECBEoSEACUBK0YAgQIECBAgAABAoMgIAAYhFawDAQIECBAgAABAgRKEhAAlAStGAIECBAgQIAAAQKDICAAGIRWsAwECBAgQIAAAQIEShIQAJQErRgCBAgQIECAAAECgyAgABiEVrAMBAgQIECAAAECBEoSEACUBK0YAgQIECBAgAABAoMgIAAYhFawDAQIECBAgAABAgRKEhAAlAStGAIECBAgQIAAAQKDICAAGIRWsAwECBAgQIAAAQIEShIQAJQErRgCBAgQIECAAAECgyAgABiEVrAMBAgQIECAAAECBEoSEACUBK0YAgQIECBAgAABAoMgIAAYhFawDAQIECBAgAABAgRKEhAAlAStGAIECBAgQIAAAQKDICAAGIRWsAwECBAgQIAAAQIEShIQAJQErRgCBAgQIECAAAECgyAgABiEVrAMBAgQIECAAAECBEoSEACUBK0YAgQIECBAgAABAoMgIAAYhFawDAQIECBAgAABAgRKEhAAlAStGAIECBAgQIAAAQKDICAAGIRWsAwECBAgQIAAAQIEShIQAJQErRgCBAgQIECAAAECgyAgABiEVrAMBAgQIECAAAECBEoSmF1SOUNTzB133JFOP/300uqz8cYbpyWXXLK08hREoF8Ct99+e7ryyivTJZdckm644YZ05plnpuWWWy6ttNJK/SpSvgRKFTj11FPTvffeW0qZz3nOc9Jqq61WSlkKIdBPgfvvvz9de+216frrr0+NRiOddtpp6YlPfGJaeeWV04ILLtjPomud96yM3ai1QIeVf/GLX5wuvvjiNP/883c4Z+eTP/roo+m5z31uOvfcczuf2RwEBkDgz3/+czrssMPSKaeckm655Za0yCKLpIcffjjFur3QQgsV/z722GMptqvtt98+ve51r0uzZ7suMQBNZxE6FDj55JPTlltumR7/+Md3OGd3k991110pTpzmzJnTXQbmIlChwM0335y+/vWvpxNOOCFddtllxXoc51X33HNPWnTRRYslu++++9KznvWstMMOO6S3vvWtaemll65wiYevaAFAh2264YYbprPPPrvDubqffL311kvnnXde9xmYk0AFAhdeeGF6z3veky699NL00EMPFSf67RYjTpzias++++6b3vnOd5YSZLdbJr8TmKrAMccck3bbbbfS7gBEoHznnXcWQfVUl9F0BKoWiBP/T37ykym2l/nmmy/FSX67tPDCCxeTvOUtb0kHHHBAmjt3brtZ/D4FAc8ATAHJJAQITE3gkUceSXvttVfaaKONUgQBcYUyrvZPJcUVzbhL8KEPfSitv/766cYbb5zKbKYhQIAAgRkgEHeCn/GMZ6RvfvOb6YEHHpjSyX9UK44j8d9xxx2Xll9++fTLX/5yBtR28BdRADD4bWQJCcwIgejas/nmm6dDDjmk2LF327swbgHHcwLxfMCtt946I+puIQkQIEBgYoHDDz88bbPNNiku9Dz44IMTTzjJLxE0xHOYL3/5y9MPfvCDSab001QEBABTUTINAQJtBXbaaad01llnTfmqzmQZNu8axAPC8XCYRIAAAQIzU+DHP/5x+sAHPtCTY0NT4E1velPRjaj5t387FxAAdG5mDgIExghEt51vfetbxQO+Y36a1p9333132mSTTYoHw6aVkZkJECBAoHSBGMRkq6226vmxIbqb7rrrrgZJmUaLCgCmgWdWAgRS+r//+790xBFH9IUiRgj6z3/+kz7+8Y/3JX+ZEiBAgEB/BOIk/Y1vfGN/Ms+5xgPEkX8MNCF1LiAA6NzMHAQItAjEiD3RN7NfKXbyRx55ZLrpppv6VYR8CRAgQKDHAl/96lfTbbfd1uNcR2cX+X/nO98Z/aW/piQgAJgSk4kIEBhP4PLLL08x1n+3D/yOl+d430X+8XCxRIAAAQIzQ+ALX/hC37tvxqAR++yzT9+PQTNDvLOlFAB05mVqAgRaBI4//vgUt3n7nWLUiGOPPbbfxcifAAECBHogEC/3ire/l5Fi+Oi4GCV1JiAA6MzL1AQItAicdNJJPX+4qyX7UR9jJx//SQQIECAw2AIxVn8ZF4dCIe4Qxwh0UmcCAoDOvExNgECLwN/+9reWv/r7MV4Pf/HFF/e3ELkTIECAwLQFYnCIfj4b1rqA8ZxYjDYkdSYwu7PJTV22QIyA8rWvfa3sYoeyvNhJxG3CtdZaayjrV3alYqz+6H9ZVoqrSfESGIkAgZRihKxvfOMbacEFF8TRA4GLLroorbzyymmRRRbpQW6y+P3vf18qgkEiOucWAHRuVuoc9957b4odkzR9geiPeNppp00/IzkUAnHbtd8P/46lLuuW8thy/U1g0ARi24s3Zs+e7TDei7Y54YQT0ste9rK0xBJL9CK72udR5sWhwG6+PLL28B0A2HN0gFXFpCussEIxBGIVZQ9bmXH1/9JLL+XZw4Y97rjjSrvNO//886fFF1+8h0svKwIzVyC2h8MOO8wV6x41YfQhj9Fk4i6ANH2BGJ8/BokoKy211FJlFTU05XgGYGiaUkUIlC+w3HLLlVZojAS02mqrlVaegggQIECgO4HYVy+wwALdzdzhXAsttFBaZ511OpzL5AIA6wABAl0LvPKVr0zzzVfObiQOJk996lO7XlYzEiBAgEA5AptsskmaM2dOKYVFOQKAzqnLOXJ3vlzmIEBgBgi84Q1vSDE6T79TdHd405velGbNmtXvouRPgAABAtMUiBPysi4OxfHhRS960TSXuH6zCwDq1+ZqTKBnArHTLaPvZVz933333Xu23DIiQIAAgf4JxMPpu+66a1p44YX7V0jOOfJ3bOiOWADQnZu5CBDIAnGF54gjjujrg4gxzOGmm26aVlllFeYECBAgMEMEPvzhD/f9OQAXh7pfGQQA3duZkwCBLPCKV7wivfjFL+7bjj76dx511FGsCRAgQGAGCcydOzd95Stf6Vs30eh+evTRRxu6tct1QgDQJZzZCBD4n8CJJ56YHn744b700T/55JPTMsss87/CfCJAgACBGSHw5je/Ob397W/vy7Juv/32KZ5Dk7oTEAB052YuAgRaBBZbbLEUw3TGKD29ejNp5HPBBRekl7zkJS0l+UiAAAECM0kguonuuOOOPbsTEHeF3/e+9xXvwZhJDoO2rAKAQWsRy0NghgrECXu8tfoFL3hBioCg2xQ79yWXXDKdccYZae211+42G/MRIECAwIAIRDfOD3zgA8XzYt2O5hbzxfFhr732SgcffPCA1GzmLoYAYOa2nSUnMHACMSLQb37zm/TFL36xeGtvJ4FABBDxQpdtttkmXXXVVWmDDTYYuPpZIAIECBDoTuDTn/50cXx43vOeV1wk6iQQiP7+8XKx888/P33iE5/obgHMNUpAADCKo/0ft956a/uJejhF9KuWCMwkgdip77zzzumf//xnOuSQQ9Kqq65adAtafPHFiyHbmjv9OOGPh8RiGLell1467bbbbunqq69Oxx57bHrCE54wk6psWQkUAvfee29pEo888khpZSmIQK8E1ltvvXTJJZekn/zkJyleJBlX9OM4EBeLmu8NiHH94+/HPe5xxe9bbbVVOuWUU9Kf/vSntPrqq/dqUWqfz+zaC3QIcOqpp6Yvf/nLHc7V3eSNRiO9+93v7m5mcxGoWGCRRRZJO+ywQ/HfHXfckS688MJ05ZVXpttvvz3df//9xfsDlltuubTuuuum5ZdfvuKlVTyB6Qm87W1vK4Leu+66a3oZTXHu6GoX25hEYCYKvPSlL03xXwSy8axX3PW94YYb0kMPPVRcFHriE5+Y1lhjjeKqf1wsknovMCufZDZ6n60cCQyewOWXX55e//rXp8suu2zwFs4SESBAgEBlAvGekR/+8Idp5ZVXrmwZFEygTAFdgMrUVhYBAgQIECBAgACBigUEABU3gOIJECBAgAABAgQIlCkgAChTW1kECBAgQIAAAQIEKhYQAFTcAIonQIAAAQIECBAgUKaAAKBMbWURIECAAAECBAgQqFhAANCDBoghDctIjz32WF+L6Vc9+pVvXzFkPm2Bstq9n9vFo48+WgxLN12MXuUz3eUwf7kCMaRhtH2/Uz+3gX7mXZZPv/3l35lAWe3ez3W3l3mXdawc20qlBADnnXdeOvvss8eWPa2/b7nllnTMMcdMK4+pznzSSSeleHnReC8BO/roo4vxzKeaV6fTxZCV8bKMxz/+8cWYz2uvvXY67bTT2mYTL9CIt7FONfWrHv3Kd6r1GuTpZvp28aY3vSltsskm4xL3u93L2C5iB7/FFlsULzUbt5JjvlxiiSXS5z//+THfptRpPvNkMMRf9GM/Ht5f+cpX0gMPPFCKXLy06Ktf/eo8ZV133XVp2WWXTb/4xS/m+a0XX8RLxz74wQ8WZcyePTs9/elPT/vtt18xrvpk+ce7OeJlTO3S9773vWIM9ng7d6zb2267bTFOe7v5pvp7v32muhyDON1M3y4mO2fqd7v3c7voNu94MeZaa6017qrW72PluIX+98u+BwDxkod4Yck111wz2XJ0/Nsuu+ySTjjhhI7n6+UMsZK/5z3vSf16lcJtt92WXvayl6Wbb745fe1rX0s/+9nPip19BAQXXXRRz6rSr3r0K9+eVbzCjGwX3eOXsV08+OCD6V3veleKF/9NNW233Xbpuc997qjJu8lnVAZD/kc/9uNxXIj9chlX3idqnmuvvbYIHse7aDTRPJ1+Hy+J/OY3v5l23333FBcT4kVkn/rUp9I+++zTaVbzTP/Tn/40vfnNby5e0veb3/wmHXjggcUxJ449cfV2uqkMn+kuY5Xz2y661+/ndtFt3i984QvTa17zmnkqVfU5Ut/fBBwnx/04QY6rPHFVvop05513FgeY7373u+nZz352uv766/uyGD/+8Y/TjTfemOLfddZZpygjrtzEVaW4+zFRRDnVhelXPfqV71TrNROms11030r93i4iuH7rW9+a/vWvf6V4G+VU0+GHHz5q0m7zGZXJkP/Rj/145FllijfFf/jDH05PecpT+rYYsY/9zne+U9wB+MhHPlKUE2/UjpcdxsWifffdd1plH3HEEWmFFVZI3/jGN4p8NtxwwxR3leMuQAQbL37xi7vOvwyfrhduQGa0XXTXEP3cLqaT99vf/vZRFRqUc6S+3gG477770vrrr19UPK5KtCLEjuX5z39+sVOJHVdccWhN8WrojTbaqPg9dkTbb799uv3224tJ4orHGWecUXQrii4xcaCOHV7sCA899ND0zGc+M6200krFzjFu2bSmSy+9NG222WZpySWXLKbba6+90sMPP9w6STrllFPSy1/+8vSEJzwhvfa1r0033XTTqN8vvvjiouwf/ehHKSL1bgOR2MhjueN1109+8pOLKzlf//rXi51sFLjmmmum2Fk2T/7ju9gJL7XUUumOO+6IPydN99xzT3EiE/VYffXV01FHHTVq+m7rMVnbRAHd5jtq4Yb4j5m4XcS6+ulPf7q4wv20pz0t7b333kXXltZm6lW7/+1vf0vvfOc7i0A3rqgff/zxxXoc20akfm8XsZ0st9xyxXq84oortlZx0s/xWvtjjz12ZJpu8xnJYMg/jLcfjyq320ffddddxfHgSU96UrEfD/fzzz+/0PrJT36SPv7xjxef46T1uOOOK05Y4zhx4YUXFnejY//5xje+MV1yySXFdM3/xbEi7hzE8WbppZdOW2655TwXd/7+97+n6EITZccFmPG6Y+6///5pt912Sz//+c+bWXf1bxyH4op7HKviTvCZZ56Zoh6xfcTdjejmFFckW1Ms+9133z3Pttk6TfNznOTHcTLW9TiOxX6pmWL7i/xbU+QdKU5eJkqTtU1znl75NPMbtn9n4nbR7pwp2qgX7d7unKmf28V08o6ueXFRqZl6daxs5tf1v/lKZN9SPrFu5INgIy9cY8cdd2zkk/yirHw7sZH7TTby1YRGfvV2I6/wjXwS3ci3Q4rf84lrI++kG/kkvPH973+/kU/qG3mH23jFK15R/P6rX/2qkYOHRj6pbeRboI28wyvyX3zxxRt5h9bIB4FGPmko5slBRzFP/C9fHWksvPDCxby531Ujn1w38s61kW91jkzzxz/+sTFnzpxGvp3ayFcaG7nvViP3gSzqkPvlFdPlk+9G7l9afD7ooIMaiyyyyMj8nXzIJ1TF8hxwwAGNE088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BAi0ERAAtAHyMwECBAgQIECAAIFhEhAADFNrqgsBAgQIECBAgACBNgICgDZAfiZAgAABAgQIECAwTAICgGFqTXUhQIAAAQIECBAg0EZAANAGyM8ECBAgQIAAAQIEhklAADBMrakuBAgQIECAAAECBNoICADaAPmZAAECBAgQIECAwDAJCACGqTXVhQABAgQIECBAgEAbAQFAGyA/EyBAgAABAgQIEBgmAQHAMLWmuhAgQIAAAQIECBBoIyAAaAPkZwIECBAgQIAAAQLDJCAAGKbWVBcCBAgQIECAAAECbQQEAG2A/EyAAAECBAgQIEBgmAQEAMPUmupCgAABAgQIECBAoI2AAKANkJ8JECBAgAABAgQIDJOAAGCYWlNdCBAgQIAAAQIECLQREAC0AfIzAQIECBAgQIAAgWESEAAMU2uqCwECBAgQIECAAIE2AgKANkB+JkCAAAECBAgQIDBMAgKAYWpNdSFAgAABAgQIECDQRkAA0AbIzwQIECBAgAABAgSGSUAAMEytqS4ECBAgQIAAAQIE2ggIANoA+ZkAAQIECBAgQIDAMAkIAIapNdWFAAECBAgQIECAQBsBAUAbID8TIECAAAECBAgQGCYBAcAwtaa6ECBAgAABAgQIEGgjIABoA+RnAgQIECBAgAABAsMkIAAYptZUl7YCjUaj7TQmIECAAIF6CTg21Ku91TYlAYC1oDYC1157bbruuutqU18VJUCAAIGpCcSxIY4REoG6CAgA6tLS6plWXHHF4j8UBAgQIECgVcDxoVXD5zoICADq0MrqSIAAAQIECBAgQOC/AgIAqwIBAgQIECBAgACBGgkIAGrU2KpKgAABAgQIECBAQABgHSBAgAABAgQIECBQIwEBQI0aW1UJECBAgAABAgQICACsAwQIECBAgAABAgRqJCAAqFFjqyoBAgQIECBAgAABAYB1gAABAgQIECBAgECNBAQANWpsVSVAgAABAgQIECAgALAOECBAgAABAgQIEKiRgACgRo2tqgQIECBAgAABAgQEANYBAgQIECBAgAABAjUSEADUqLFVlQABAgQIECBAgIAAwDpAgAABAgQIECBAoEYCAoAaNbaqEiBAgAABAgQIEBAAWAcIECBAgAABAgQI1EhAAFCjxlZVAgQIECBAgAABAgIA6wABAgQIECBAgACBGgkIAGrU2KpKgAABAgQIECBAQABgHSBAgAABAgQIECBQIwEBQI0aW1UJECBAgAABAgQICACsAwQIECBAgAABAgRqJCAAqFFjqyoBAgQIECBAgAABAYB1gAABAgQIECBAgECNBAQANWpsVSVAgAABAgQIECAgALAOECBAgAABAgQIEKiRgACgRo2tqgQIECBAgAABAgQEANYBAgQIECBAgAABAjUSEADUqLFVlQABAgQIECBAgIAAwDpAgAABAgQIECBAoEYCAoAaNbaqEiBAgAABAgQIEBAAWAcIECBAgAABAgQI1EhAAFCjxlZVAgQIECBAgAABAgIA6wABAgQIECBAgACBGgkIAGrU2KpKgAABAgQIECBAQABgHSBAgAABAgQIECBQIwEBQI0aW1UJECBAgAABAgQICACsAwQIECBAgAABAgRqJCAAqFFjqyoBAgQIECBAgAABAYB1gAABAgQIECBAgECNBAQANWpsVSVAgAABAgQIECAgALAOECBAgAABAgQIEKiRgACgRo2tqgQIECBAgAABAgQEANYBAgQIECBAgAABAjUSEADUqLFVlQABAgQIECBAgIAAwDpAgAABAgQIECBAoEYCAoAaNbaqEiBAgAABAgQIEBAAWAcIECBAgAABAgQI1EhAAFCjxlZVAgQIECBAgAABAgIA6wABAgQIECBAgACBGgkIAGrU2KpKgAABAgQIECBAQABgHSBAgAABAgQIECBQIwEBQI0aW1UJECBAgAABAgQICACsAwQIECBAgAABAgRqJCAAqFFjqyoBAgQIECBAgAABAYB1gAABAgQIECBAgECNBAQANWpsVSVAgAABAgQIECAgALAOECBAgAABAgQIEKiRgACgRo2tqgQIECBAgAABAgQEANYBAgQIECBAgAABAjUSEADUqLFVlQABAgQIECBAgIAAwDpAgAABAgQIECBAoEYCAoAaNbaqEiBAgAABAgQIEBAAWAcIECBAgAABAgQI1EhAAFCjxlZVAgQIECBAgAABAgIA6wABAgQIECBAgACBGgkIAGrU2KpKgAABAgQIECBAQABgHSBAgAABAgQIECBQIwEBQI0aW1UJECBAgAABAgQICACsAwQIECBAgAABAgRqJCAAqFFjqyoBAgQIECBAgAABAYB1gAABAgQIECBAgECNBAQANWpsVSVAgAABAgQIECAgALAOECBAgAABAgQIEKiRgACgRo2tqgQIECBAgAABAgQEANYBAgQIECBAgAABAjUSEADUqLFVlQABAgQIECBAgIAAwDpAgAABAgQIECBAoEYCAoAaNbaqEiBAgAABAgQIEBAAWAcIECBAgAABAgQI1EhAAFCjxlZVAgQIECBAgAABAgIA6wABAgQIECBAgACBGgkIAGrU2KpKgAABAgQIECBAQABgHSBAgAABAgQIECBQIwEBQI0aW1UJECBAgAABAgQICACsAwQIECBAgAABAgRqJCAAqFFjqyoBAgQIECBAgAABAYB1gAABAgQIECBAgECNBAQANWpsVSVAgAABAgQIECAgALAOECBAgAABAgQIEKiRgACgRo2tqgQIECBAgAABAgQEANYBAgQIECBAgAABAjUSEADUqLFVlQABAgQIECBAgIAAwDpAgAABAgQIECBAoEYCAoAaNbaqEiBAgAABAgQIEBAAWAcIECBAgAABAgQI1EhAAFCjxlZVAgQIECBAgAABAgIA6wABAgQIECBAgACBGgkIAGrU2KpKgAABAgQIECBAQABgHSBAgAABAgQIECBQIwEBQI0aW1UJECBAgAABAgQICACsAwQIECBAgAABAgRqJCAAqFFjqyoBAgQIECBAgAABAYB1gAABAgQIECBAgECNBAQANWpsVSVAgAABAgQIECAgALAOECBAgAABAgQIEKiRgACgRo1d96refvvt6bbbbqs7g/oTIECAwBiBODbEMUIiUBcBAUBdWlo9C4FZs2aRIECAAAECowQcG0Zx+KMGAgKAGjSyKv7/AksssUSK/yQCBAgQINAq4PjQquFzHQQEAHVoZXUkQIAAAQIECBAg8F8BAYBVgQABAgQIECBAgECNBAQANWpsVSVAgAABAgQIECAgALAOECBAgAABAgQIEKiRgACgRo2tqgQIECBAgAABAgQEANYBAgQIECBAgAABAjUSEADUqLFVlQABAgQIECBAgIAAwDpAgAABAgQIECBAoEYCAoAaNbaqEiBAgAABAgQIEBAAWAcIECBAgAABAgQI1EhAAFCjxlZVAgQIECBAgAABAgIA6wABAgQIECBAgACBGgkIAGrU2KpKgAABAgQIECBAQABgHSBAgAABAgQIECBQIwEBQI0aW1UJECBAgAABAgQICACsAwQIECBAgAABAgRqJCAAqFFjqyoBAgQIECBAgAABAYB1gAABAgQIECBAgECNBAQANWpsVSVAgAABAgQIECAgALAOECBAgAABAgQIEKiRgACgRo2tqgQIECBAgAABAgQEANYBAgQIECBAgAABAjUSEADUqLFVlQABAgQIECBAgIAAwDpAgAABAgQIECBAoEYCAoAaNbaqEiBAgAABAgQIEBAAWAcIECBAgAABAgQI1EhAAFCjxlZVAgQIECBAgAABAgIA6wABAgQIECBAgACBGgkIAGrU2KpKgAABAgQIECBAQABgHSBAgAABAgQIECBQIwEBQI0aW1UJECBAgAABAgQICACsAwQIECBAgAABAgRqJCAAqFFjqyoBAgQIECBAgAABAYB1gAABAgQIECBAgECNBAQANWpsVSVAgAABAgQIECAgALAOECBAgAABAgQIEKiRgACgRo2tqgQIECBAgAABAgQEANYBAgQIECBAgAABAjUSEADUqLFVlQABAgQIECBAgIAAwDpAgAABAgQIECBAoEYCAoAaNbaqEiBAgAABAgQIEBAAWAcIECBAgAABAgQI1EhAAFCjxlZVAgQIECBAgAABAgIA6wABAgQIECBAgACBGgkIAGrU2KpKgAABAgQIECBAQABgHSBAgAABAgQIECBQIwEBQI0aW1UJECBAgAABAgQICACsAwQIECBAgAABAgRqJCAAqFFjqyoBAgQIECBAgAABAYB1gAABAgQIECBAgECNBAQANWpsVSVAgAABAgQIECAgALAOECBAgAABAgQIEKiRgACgRo2tqgQIECBAgAABAgQEANYBAgQIECBAgAABAjUSEADUqLFVlQABAgQIECBAgIAAwDpAgAABAgQIECBAoEYCAoAaNbaqEiBAgAABAgQIEBAAWAcIECBAgAABAgQI1EhAAFCjxlZVAgQIECBAgAABAgIA6wABAgQIECBAgACBGgkIAGrU2KpKgAABAgQIECBAQABgHSBAgAABAgQIECBQIwEBQI0aW1UJECBAgAABAgQICACsAwQIECBAgAABAgRqJCAAqFFjqyoBAgQIECBAgAABAYB1gAABAgQIECBAgECNBAQANWpsVSVAgAABAgQIECAgALAOECBAgAABAgQIEKiRgACgRo2tqgQIECBAgAABAgQEANYBAgQIECBAgAABAjUSEADUqLFVlQABAgQIECBAgIAAwDpAgAABAgQIECBAoEYCAoAaNbaq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T3lK2mKLLVq/9pkAAQIECBAgMKMFBAAzuvnqvfArrrhi+tCHPpTiKn0/0sILL5y+973vpfnms5n0w1eeBAgQIECAQDUCzmyqcVdqjwQ+/elPp+c973k9ym10Nocffnhac801R3/pLwIECBAgQIDADBcQAMzwBrT4KZ1zzjlpww03TIssskhPOGLYz29/+9tp++2370l+MiFAgAABAgQIDJKAAGCQWsOydC1w+umnp7e97W3T6g4UzxPE0KLf+c530nbbbdf1spiRAAECBAgQIDDIAgKAQW4dyzZlgXhb71e+8pV00kknpZVWWik97nGPm/K8MZJQXPXfdNNN0+WXX55e97rXTXleExIgQIAAAQIEZpqAAGCmtZjlnVRgs802S1dffXU6/vjj00tf+tK00EILpblz5xZX9mfPnp1iZJ/md9FlKH7beeed0yWXXJJ+/vOfF6P+TFqAHwkQIEBgYAUeeeSRUpftgQceKLU8hRHolcCsRk69ykw+BAZN4OGHH04XXnhhERT85z//Sffff39x0r/MMssUb/eNkYQiKJAIECBAYOYLxD5/v/32K60iW221Vd8GoiitEgqqpYAAoJbNrtIECBAgQIAAAQJ1FdAFqK4tr94ECBAgQIAAAQK1FBAA1LLZVZoAAQIECBAgQKCuAgKAura8ehMgQIAAAQIECNRSQABQy2ZXaQIECBAgQIAAgboKCADq2vLqTYAAAQIECBAgUEsBAUAtm324Kx1DfZaR+j2Cbi/q8eijj6aHHnqoDA5lECBAYKAFYl8Y+8R+p34eGx577LGeLX4vjjE9WxgZlS4gACidvPoCzzvvvHT22Wf3dEFuueWWdMwxx/Q0z4kyi7f9xtj9t9566zyTHH300WmppZaa5/tefRFjTH/pS19K66+/fvFysY022iidf/75bbOPNxN/8YtfbDtdc4JO6hEvMltrrbWas478GweKLbbYonjR2ciXPhAgQGACgX7sx2M/FG9pL+uFWfFm969+9avz1PC6665Lyy67bPrFL34xz2+9+iLy3nrrrYs30a+66qrFsaJd3jvssENab7312k2Wvve976XVVluteJHlEksskbbddtt0ww03TDrfaaedVhwrr7322nmm6+QYM8/MvhgKAQHAUDTj1CsRb0l8wQtekK655pqpzzSFKXfZZZd0wgknTGHK/k0SgcF73vOe1M+rL1/72tfSPvvsk97xjnekX//612m55ZZLG2+8cbr88st7VrFO6/HCF74wveY1rxlV/oMPPpje9a53pVNPPXXU9/4gQIDARAL92I/HcSH2y2VceZ+oXnECHBdDxrtoNNE8nX5//fXXpy233DItvfTS6be//W3aaaed0p577pkOPPDATrOaZ/qf/vSn6c1vfnNad911029+85siz4suuii98pWvnPQObxyftt9++yIgac2002NM67w+D4+AAGB42nJKNYmT436cIMdVnqreqHvnnXem7bbbLr3+9a9PK6ywwpQcupkobpd+5jOfSXGQjJPruAtw5JFHFvWOHep0U7f1ePvb35723nvvkeLjwLDmmmumE088MT3xiU8c+d4HAgQITCbQj/145Fll+vKXv5xWX331FBe/+pn23Xff9JSnPCUdfvjhaZ111kl77LFHEXR8+9vfnnaxRxxxRHFs+8Y3vpE23HDDtOOOO6b9998//fnPf05xR3+itMoqq6SYJ4KSSN0eYybK3/czW0AAMLPbr6Olv++++4qT1pgprmLHiWMzxU7i+c9/fnGlIK4yxBWH1nTBBRek6O4SXVniJDuuKtx+++3FJLvvvns644wzim5Fa6+9dvrXv/6VYmf4kY98JB166KHpmc98ZlpppZXSBz/4wXTvvfe2ZpsuvfTStNlmm6Ull1yymG6vvfZK0c2mNZ1yyinp5S9/efr/2ju3UNumN4Cvv467UB7wgJPk8iBelUSRRIkkCm8ehHhAnVwePJESeaTcIh7kkhR5QXiRW5FL6kjkUhLex//7fTWmsddZe5019tk7Z9i/r9Zec8055phj/ubuG+P7xje+ecwxx8wuv/zy2S+//NIenn388cd57ZdffjkH5xs1ROioaPfZZ589O/7442fc1+OPP55TrVzw0EMPnX3++eeze+65Z7o+DPC2H3TQQdO+9Tb+/vvv2fXXX5/3QYf0xBNPrCm60fvgtffUW4V68fxQ38knn1x3+y0BCUhgXQKL9DiF96aj//zzz+wPjjvuuNTjF1xwwRQW+dprr036koHrs88+mwNW+omPPvooZ6MJ2bzmmmtmn3zyyZq20Vcwc0B/wwAW7zpe9la+//77GSE0XJswSEJe5oWB8i233DJ744035g91/aYfwuNOX3XRRRfN3n333Rn3sXv37qznsccey30HHPDP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" style="display: block; margin: auto;" /></p>
-<p>The <code>plot_pedigree()</code> function from <code>skater</code> will iterate over a list of pedigree objects, writing a multi-page PDF, with each page containing a pedigree from family:</p>
+<p>The <code>plot_pedigree()</code> function from <code>skater</code>
+will iterate over a list of pedigree objects, writing a multi-page PDF,
+with each page containing a pedigree from family:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_pedigree</span>(peds<span class="sc">$</span>ped, <span class="at">file=</span><span class="st">&quot;3gens.ped.pdf&quot;</span>)</span></code></pre></div>
-<p>The <code>ped2kinpair()</code> function takes a pedigree object and produces a pairwise list of relationships between all individuals in the data with the expected kinship coefficients for each pair.</p>
+<p>The <code>ped2kinpair()</code> function takes a pedigree object and
+produces a pairwise list of relationships between all individuals in the
+data with the expected kinship coefficients for each pair.</p>
 <p>The function can be run on a single family:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ped2kinpair</span>(peds<span class="sc">$</span>ped[[<span class="dv">1</span>]])</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># # A tibble: 36 × 3</span></span>
@@ -252,12 +478,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">#  9 testped1 testped1_g1-b1-i1 testped1_g1-b1-i1 0.5  </span></span>
 <span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 10 testped1 testped1_g1-b1-i1 testped1_g2-b1-s1 0    </span></span>
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co"># # … with 278 more rows</span></span></code></pre></div>
-<p>Note that this maps <code>ped2kinpair()</code> over all <code>ped</code> objects in the input <code>tibble</code>, and that relationships are not shown for between-family relationships (which should all be zero).</p>
+<p>Note that this maps <code>ped2kinpair()</code> over all
+<code>ped</code> objects in the input <code>tibble</code>, and that
+relationships are not shown for between-family relationships (which
+should all be zero).</p>
 </div>
 <div id="degree-inference" class="section level2">
 <h2>Degree Inference</h2>
-<p>The <code>skater</code> package includes functions to translate kinship coefficients to relationship degrees. The kinship coefficients could come from <code>ped2kinpair()</code> or other kinship estimation software.</p>
-<p>The <code>dibble()</code> function creates a <strong>d</strong>egree <strong>i</strong>nference <code>tibble</code>, with degrees up to the specified <code>max_degree</code> (default=3), expected kinship coefficient, and lower (<code>l</code>) and upper (<code>u</code>) inference ranges as defined in the KING paper.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Degree 0 corresponds to self / identity / monozygotic twins, with an expected kinship coefficient of 0.5, with inference range &gt;=0.354. Anything beyond the maximum degree resolution is considered unrelated (degree <code>NA</code>), with expected kinship coefficient of 0.</p>
+<p>The <code>skater</code> package includes functions to translate
+kinship coefficients to relationship degrees. The kinship coefficients
+could come from <code>ped2kinpair()</code> or other kinship estimation
+software.</p>
+<p>The <code>dibble()</code> function creates a <strong>d</strong>egree
+<strong>i</strong>nference <code>tibble</code>, with degrees up to the
+specified <code>max_degree</code> (default=3), expected kinship
+coefficient, and lower (<code>l</code>) and upper (<code>u</code>)
+inference ranges as defined in the KING paper.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Degree 0 corresponds
+to self / identity / monozygotic twins, with an expected kinship
+coefficient of 0.5, with inference range &gt;=0.354. Anything beyond the
+maximum degree resolution is considered unrelated (degree
+<code>NA</code>), with expected kinship coefficient of 0.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dibble</span>()</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># # A tibble: 5 × 4</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   degree      k       l      u</span></span>
@@ -267,7 +507,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3      2 0.125   0.0884 0.177 </span></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 4      3 0.0625  0.0442 0.0884</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 5     NA 0      -1      0.0442</span></span></code></pre></div>
-<p>The degree inference <code>max_degree</code> default is 3. Change this argument to allow more granular degree inference ranges:</p>
+<p>The degree inference <code>max_degree</code> default is 3. Change
+this argument to allow more granular degree inference ranges:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dibble</span>(<span class="at">max_degree =</span> <span class="dv">5</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># # A tibble: 7 × 4</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   degree      k       l      u</span></span>
@@ -279,17 +520,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 5      4 0.0312  0.0221 0.0442</span></span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 6      5 0.0156  0.0110 0.0221</span></span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 7     NA 0      -1      0.0110</span></span></code></pre></div>
-<p>Note that the distance between relationship degrees becomes smaller as the relationship degree becomes more distant. The <code>dibble()</code> function will throw a warning with <code>max_degree</code> &gt;=10, and will stop with an error at &gt;=12.</p>
-<p>The <code>kin2degree()</code> function infers the relationship degree given a kinship coefficient and a <code>max_degree</code> up to which anything more distant is treated as unrelated. Example first degree relative:</p>
+<p>Note that the distance between relationship degrees becomes smaller
+as the relationship degree becomes more distant. The
+<code>dibble()</code> function will throw a warning with
+<code>max_degree</code> &gt;=10, and will stop with an error at
+&gt;=12.</p>
+<p>The <code>kin2degree()</code> function infers the relationship degree
+given a kinship coefficient and a <code>max_degree</code> up to which
+anything more distant is treated as unrelated. Example first degree
+relative:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kin2degree</span>(.<span class="dv">25</span>, <span class="at">max_degree=</span><span class="dv">3</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] 1</span></span></code></pre></div>
-<p>Example 4th degree relative, but using the default max_degree resolution of 3:</p>
+<p>Example 4th degree relative, but using the default max_degree
+resolution of 3:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kin2degree</span>(.<span class="dv">0312</span>, <span class="at">max_degree=</span><span class="dv">3</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] NA</span></span></code></pre></div>
-<p>Example 4th degree relative, but increasing the degree resolution:</p>
+<p>Example 4th degree relative, but increasing the degree
+resolution:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kin2degree</span>(.<span class="dv">0312</span>, <span class="at">max_degree=</span><span class="dv">5</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] 4</span></span></code></pre></div>
-<p>The <code>kin2degree()</code> function is vectorized over values of <code>k</code>, so it can be used inside of a <code>mutate</code> on a <code>tibble</code> of kinship coefficients:</p>
+<p>The <code>kin2degree()</code> function is vectorized over values of
+<code>k</code>, so it can be used inside of a <code>mutate</code> on a
+<code>tibble</code> of kinship coefficients:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get two pairs from each type of relationship we have in kinpairs:</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>kinpairs_subset <span class="ot">&lt;-</span> </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  kinpairs <span class="sc">%&gt;%</span> </span>
@@ -331,18 +583,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="benchmarking-degree-classification" class="section level2">
 <h2>Benchmarking Degree Classification</h2>
-<p>Once estimated kinship is converted to degree, it may be of interest to compare the inferred degree to truth. When aggregated over many relationships and inferences, this method can help benchmark performance of a particular kinship analysis method.</p>
-<p>The <code>skater</code> package adapts functionality from the <code>confusionMatrix</code> package<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> in the <code>confusion_matrix()</code> function.</p>
-<p>The <code>confusion_matrix()</code> function on its own outputs a list with three objects:</p>
+<p>Once estimated kinship is converted to degree, it may be of interest
+to compare the inferred degree to truth. When aggregated over many
+relationships and inferences, this method can help benchmark performance
+of a particular kinship analysis method.</p>
+<p>The <code>skater</code> package adapts functionality from the
+<code>confusionMatrix</code> package<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> in the <code>confusion_matrix()</code>
+function.</p>
+<p>The <code>confusion_matrix()</code> function on its own outputs a
+list with three objects:</p>
 <ol style="list-style-type: decimal">
-<li>A <code>tibble</code> with calculated accuracy, lower and upper bounds, the guessing rate and p-value of the accuracy vs. the guessing rate.</li>
-<li>A <code>tibble</code> with the following statistics (for each class):
+<li>A <code>tibble</code> with calculated accuracy, lower and upper
+bounds, the guessing rate and p-value of the accuracy vs. the guessing
+rate.</li>
+<li>A <code>tibble</code> with the following statistics (for each
+class):
 <ul>
 <li>Sensitivity = A/(A+C)</li>
 <li>Specificity = D/(B+D)</li>
 <li>Prevalence = (A+C)/(A+B+C+D)</li>
-<li>PPV = (sensitivity * prevalence)/((sensitivity * prevalence) + ((1-specificity) * (1-prevalence)))</li>
-<li>NPV = (specificity * (1-prevalence))/(((1-sensitivity) * prevalence) + ((specificity) * (1-prevalence)))</li>
+<li>PPV = (sensitivity * prevalence)/((sensitivity * prevalence) +
+((1-specificity) * (1-prevalence)))</li>
+<li>NPV = (specificity * (1-prevalence))/(((1-sensitivity) * prevalence)
++ ((specificity) * (1-prevalence)))</li>
 <li>Detection Rate = A/(A+B+C+D)</li>
 <li>Detection Prevalence = (A+B)/(A+B+C+D)</li>
 <li>Balanced Accuracy = (sensitivity+specificity)/2</li>
@@ -355,9 +618,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>False Negative Rate = 1 - Sensitivity</li>
 </ul></li>
 <li>A <code>matrix</code> with the contingency table object itself.</li>
-<li>A <code>vector</code> with the reciprocal RMSE (R-RMSE). The R-RMSE is calculated as <code>sqrt(mean((1/(Target+.5)-1/(Predicted+.5))^2)))</code>, and is a superior measure to classification accuracy when benchmarking relationship degree estimation. Taking the reciprocal of the target and predicted degree results in larger penalties for more egregious misclassifications (e.g., classifying a first-degree relative pair as second degree) than misclassifications at more distant relationships (e.g., misclassifying a fourth-degree relative pair as fifth-degree). The +0.5 adjustment prevents division-by-zero when a 0th-degree (identical) relative pair is introduced.</li>
+<li>A <code>vector</code> with the reciprocal RMSE (R-RMSE). The R-RMSE
+is calculated as
+<code>sqrt(mean((1/(Target+.5)-1/(Predicted+.5))^2)))</code>, and is a
+superior measure to classification accuracy when benchmarking
+relationship degree estimation. Taking the reciprocal of the target and
+predicted degree results in larger penalties for more egregious
+misclassifications (e.g., classifying a first-degree relative pair as
+second degree) than misclassifications at more distant relationships
+(e.g., misclassifying a fourth-degree relative pair as fifth-degree).
+The +0.5 adjustment prevents division-by-zero when a 0th-degree
+(identical) relative pair is introduced.</li>
 </ol>
-<p>To illustrate the usage, first take the <code>kinpairs</code> data from above and randomly flip ~20% of the true relationship degrees.</p>
+<p>To illustrate the usage, first take the <code>kinpairs</code> data
+from above and randomly flip ~20% of the true relationship degrees.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to randomly flip levels of a factor (at 20%, by default)</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>randomflip <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">p=</span>.<span class="dv">2</span>) <span class="fu">ifelse</span>(<span class="fu">runif</span>(<span class="fu">length</span>(x))<span class="sc">&lt;</span>p, <span class="fu">sample</span>(<span class="fu">unique</span>(x)), x)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -370,19 +644,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">degree_inferred=</span><span class="fu">randomflip</span>(degree_truth))</span>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>kinpairs_inferred</span>
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># # A tibble: 288 × 6</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co">#    fid      id1               id2                 k degree_truth degree_inferred</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co">#    &lt;chr&gt;    &lt;chr&gt;             &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;          </span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co">#  1 testped1 testped1_g1-b1-s1 testped1_g1-b1… 0.5   0            0              </span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co">#  2 testped1 testped1_g1-b1-i1 testped1_g1-b1… 0     unrelated    unrelated      </span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co">#  3 testped1 testped1_g1-b1-s1 testped1_g2-b1… 0     unrelated    unrelated      </span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co">#  4 testped1 testped1_g1-b1-s1 testped1_g2-b1… 0.25  1            1              </span></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co">#  5 testped1 testped1_g1-b1-s1 testped1_g2-b2… 0     unrelated    unrelated      </span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co">#  6 testped1 testped1_g1-b1-s1 testped1_g2-b2… 0.25  1            1              </span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="co">#  7 testped1 testped1_g1-b1-s1 testped1_g3-b1… 0.125 2            2              </span></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co">#  8 testped1 testped1_g1-b1-s1 testped1_g3-b2… 0.125 2            1              </span></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="co">#  9 testped1 testped1_g1-b1-i1 testped1_g1-b1… 0.5   0            0              </span></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="co"># 10 testped1 testped1_g1-b1-i1 testped1_g2-b1… 0     unrelated    unrelated      </span></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="co"># # … with 278 more rows</span></span></code></pre></div>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co">#    fid      id1               id2                   k degree_truth degree_infe…¹</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co">#    &lt;chr&gt;    &lt;chr&gt;             &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;        </span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co">#  1 testped1 testped1_g1-b1-s1 testped1_g1-b1-s1 0.5   0            0            </span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co">#  2 testped1 testped1_g1-b1-i1 testped1_g1-b1-s1 0     unrelated    unrelated    </span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co">#  3 testped1 testped1_g1-b1-s1 testped1_g2-b1-s1 0     unrelated    unrelated    </span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co">#  4 testped1 testped1_g1-b1-s1 testped1_g2-b1-i1 0.25  1            1            </span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co">#  5 testped1 testped1_g1-b1-s1 testped1_g2-b2-s1 0     unrelated    unrelated    </span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co">#  6 testped1 testped1_g1-b1-s1 testped1_g2-b2-i1 0.25  1            1            </span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="co">#  7 testped1 testped1_g1-b1-s1 testped1_g3-b1-i1 0.125 2            2            </span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co">#  8 testped1 testped1_g1-b1-s1 testped1_g3-b2-i1 0.125 2            1            </span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="co">#  9 testped1 testped1_g1-b1-i1 testped1_g1-b1-i1 0.5   0            0            </span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="co"># 10 testped1 testped1_g1-b1-i1 testped1_g2-b1-s1 0     unrelated    unrelated    </span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="co"># # … with 278 more rows, and abbreviated variable name ¹​degree_inferred</span></span></code></pre></div>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusion_matrix</span>(<span class="at">prediction =</span> kinpairs_inferred<span class="sc">$</span>degree_inferred, </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">target =</span> kinpairs_inferred<span class="sc">$</span>degree_truth)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># $Accuracy</span></span>
@@ -393,30 +667,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># $Other</span></span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># # A tibble: 6 × 15</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   Class      N `Sensitivity/Re… `Specificity/TN… `PPV/Precision`   NPV `F1/Dice`</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   &lt;chr&gt;  &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 0       64              0.75             0.964           0.857 0.931     0.8  </span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 1       72              0.806            0.944           0.829 0.936     0.817</span></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 3 2       48              0.833            0.967           0.833 0.967     0.833</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 4 3        8              0.75             0.936           0.25  0.992     0.375</span></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 5 unrel…  96              0.854            0.958           0.911 0.929     0.882</span></span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 6 Avera…  57.6            0.799            0.954           0.736 0.951     0.741</span></span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="co"># # … with 8 more variables: Prevalence &lt;dbl&gt;, Detection Rate &lt;dbl&gt;,</span></span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="co"># #   Detection Prevalence &lt;dbl&gt;, Balanced Accuracy &lt;dbl&gt;, FDR &lt;dbl&gt;, FOR &lt;dbl&gt;,</span></span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="co"># #   FPR/Fallout &lt;dbl&gt;, FNR &lt;dbl&gt;</span></span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="co"># $Table</span></span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co">#            Target</span></span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Predicted    0  1  2  3 unrelated</span></span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="co">#   0         48  4  2  1         1</span></span>
-<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co">#   1          5 58  4  0         3</span></span>
-<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="co">#   2          0  3 40  1         4</span></span>
-<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="co">#   3          8  4  0  6         6</span></span>
-<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a><span class="co">#   unrelated  3  3  2  0        82</span></span>
-<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a><span class="co"># $recip_rmse</span></span>
-<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] 0.4665971</span></span></code></pre></div>
-<p>You can use <code>purrr::pluck()</code> to isolate just the contingency table:</p>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   Class         N Sensit…¹ Speci…² PPV/P…³   NPV F1/Di…⁴ Preva…⁵ Detec…⁶ Detec…⁷</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 0          64      0.75    0.964   0.857 0.931   0.8    0.222   0.167   0.194 </span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 1          72      0.806   0.944   0.829 0.936   0.817  0.25    0.201   0.243 </span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 3 2          48      0.833   0.967   0.833 0.967   0.833  0.167   0.139   0.167 </span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 4 3           8      0.75    0.936   0.25  0.992   0.375  0.0278  0.0208  0.0833</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 5 unrelated  96      0.854   0.958   0.911 0.929   0.882  0.333   0.285   0.312 </span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 6 Average    57.6    0.799   0.954   0.736 0.951   0.741  0.2     0.162   0.2   </span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="co"># # … with 5 more variables: `Balanced Accuracy` &lt;dbl&gt;, FDR &lt;dbl&gt;, FOR &lt;dbl&gt;,</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="co"># #   `FPR/Fallout` &lt;dbl&gt;, FNR &lt;dbl&gt;, and abbreviated variable names</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="co"># #   ¹​`Sensitivity/Recall/TPR`, ²​`Specificity/TNR`, ³​`PPV/Precision`,</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co"># #   ⁴​`F1/Dice`, ⁵​Prevalence, ⁶​`Detection Rate`, ⁷​`Detection Prevalence`</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co"># $Table</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co">#            Target</span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Predicted    0  1  2  3 unrelated</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co">#   0         48  4  2  1         1</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="co">#   1          5 58  4  0         3</span></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="co">#   2          0  3 40  1         4</span></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a><span class="co">#   3          8  4  0  6         6</span></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="co">#   unrelated  3  3  2  0        82</span></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a><span class="co"># $recip_rmse</span></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] 0.4665971</span></span></code></pre></div>
+<p>You can use <code>purrr::pluck()</code> to isolate just the
+contingency table:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusion_matrix</span>(<span class="at">prediction =</span> kinpairs_inferred<span class="sc">$</span>degree_inferred, </span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">target =</span> kinpairs_inferred<span class="sc">$</span>degree_truth) <span class="sc">%&gt;%</span> </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">pluck</span>(<span class="st">&quot;Table&quot;</span>)</span>
@@ -427,7 +703,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   2          0  3 40  1         4</span></span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   3          8  4  0  6         6</span></span>
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   unrelated  3  3  2  0        82</span></span></code></pre></div>
-<p>Or optionally output in a tidy (<code>longer=TRUE</code>) format, then spread stats by class:</p>
+<p>Or optionally output in a tidy (<code>longer=TRUE</code>) format,
+then spread stats by class:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusion_matrix</span>(<span class="at">prediction =</span> kinpairs_inferred<span class="sc">$</span>degree_inferred, </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">target =</span> kinpairs_inferred<span class="sc">$</span>degree_truth, </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">longer =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
@@ -436,7 +713,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">relocate</span>(Average, <span class="at">.after=</span>dplyr<span class="sc">::</span><span class="fu">last_col</span>()) <span class="sc">%&gt;%</span> </span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(rlang<span class="sc">::</span>is_double, signif, <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
-<table>
+<table style="width:100%;">
+<colgroup>
+<col width="33%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="14%" />
+<col width="11%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Statistic</th>
@@ -580,14 +866,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="ibd-segment-analysis" class="section level2">
 <h2>IBD Segment Analysis</h2>
-<p>Tools such as <code>hap-ibd</code><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> are capable of inferring shared IBD segments between individuals. The <code>skater</code> package includes functionality to take those IBD segments, compute shared genomic centimorgan (cM) length, and convert that shared cM to a kinship coefficient. In addition to inferred segments, these functions can estimate “truth” kinship from data simulated by <code>ped-sim</code>.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
-<p>The <code>read_ibd()</code> function reads in the pairwise IBD segment format. Input to this function can either be inferred IBD segments from hap-IBD (<code>source=&quot;hapibd&quot;</code>) or simulated segments (<code>source=&quot;pedsim&quot;</code>). The first example below uses data in the <code>hap-ibd</code> output format:</p>
+<p>Tools such as <code>hap-ibd</code><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> are capable of inferring shared IBD
+segments between individuals. The <code>skater</code> package includes
+functionality to take those IBD segments, compute shared genomic
+centimorgan (cM) length, and convert that shared cM to a kinship
+coefficient. In addition to inferred segments, these functions can
+estimate “truth” kinship from data simulated by <code>ped-sim</code>.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
+<p>The <code>read_ibd()</code> function reads in the pairwise IBD
+segment format. Input to this function can either be inferred IBD
+segments from hap-IBD (<code>source=&quot;hapibd&quot;</code>) or simulated
+segments (<code>source=&quot;pedsim&quot;</code>). The first example below uses
+data in the <code>hap-ibd</code> output format:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>hapibd_fp <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;GBR.sim.ibd.gz&quot;</span>, <span class="at">package=</span><span class="st">&quot;skater&quot;</span>, <span class="at">mustWork=</span><span class="cn">TRUE</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>hapibd_seg <span class="ot">&lt;-</span> <span class="fu">read_ibd</span>(hapibd_fp, <span class="at">source =</span> <span class="st">&quot;hapibd&quot;</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># New names:</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># * `1` -&gt; `1...2`</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># * `1` -&gt; `1...4`</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># * `1` -&gt; `1...5`</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># • `1` -&gt; `1...2`</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># • `1` -&gt; `1...4`</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># • `1` -&gt; `1...5`</span></span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>hapibd_seg</span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># # A tibble: 3,954 × 6</span></span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#    id1               id2                 chr     start       end length</span></span>
@@ -603,7 +898,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="co">#  9 testped2_g1-b1-i1 testped2_g3-b1-i1     1 240810528 248578622   15.9</span></span>
 <span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 10 testped2_g1-b1-i1 testped2_g2-b2-i1     1 241186056 249170711   15.5</span></span>
 <span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="co"># # … with 3,944 more rows</span></span></code></pre></div>
-<p>In order to translate the shared genomic cM length to a kinship coefficient, you must load a genetic map with <code>read_map()</code>. Software for IBD segment inference and simulation requires a genetic map. The map loaded for kinship estimation should be the same one used for creating the shared IBD segment output. The example below uses a minimal genetic map created with <code>min_map</code><a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> that ships with <code>skater</code>:</p>
+<p>In order to translate the shared genomic cM length to a kinship
+coefficient, you must load a genetic map with <code>read_map()</code>.
+Software for IBD segment inference and simulation requires a genetic
+map. The map loaded for kinship estimation should be the same one used
+for creating the shared IBD segment output. The example below uses a
+minimal genetic map created with <code>min_map</code><a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> that ships with
+<code>skater</code>:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>gmapfile <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;sexspec-avg-min.plink.map&quot;</span>, <span class="at">package=</span><span class="st">&quot;skater&quot;</span>, <span class="at">mustWork=</span><span class="cn">TRUE</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>gmap <span class="ot">&lt;-</span> <span class="fu">read_map</span>(gmapfile)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>gmap</span>
@@ -621,7 +922,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="co">#  9     1 1.12   1892325</span></span>
 <span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 10     1 1.41   1916587</span></span>
 <span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="co"># # … with 28,716 more rows</span></span></code></pre></div>
-<p>The <code>ibd2kin()</code> function takes the segments and map file and outputs a <code>tibble</code> with one row per pair of individuals and columns for individual 1 ID, individual 2 ID, and the kinship coefficient for the pair:</p>
+<p>The <code>ibd2kin()</code> function takes the segments and map file
+and outputs a <code>tibble</code> with one row per pair of individuals
+and columns for individual 1 ID, individual 2 ID, and the kinship
+coefficient for the pair:</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ibd_dat <span class="ot">&lt;-</span> <span class="fu">ibd2kin</span>(<span class="at">.ibd_data=</span>hapibd_seg, <span class="at">.map=</span>gmap)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>ibd_dat</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # A tibble: 196 × 3</span></span>
@@ -638,7 +942,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co">#  9 testped1_g1-b1-i1 testped2_g2-b1-i1 0.000499</span></span>
 <span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 10 testped1_g1-b1-i1 testped2_g2-b1-s1 0.000318</span></span>
 <span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co"># # … with 186 more rows</span></span></code></pre></div>
-<p>As noted above, the IBD segment kinship estimation can be performed on simulated segments. The package includes an example of IBD data in that format:</p>
+<p>As noted above, the IBD segment kinship estimation can be performed
+on simulated segments. The package includes an example of IBD data in
+that format:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pedsim_fp <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;GBR.sim.seg.gz&quot;</span>, <span class="at">package=</span><span class="st">&quot;skater&quot;</span>, <span class="at">mustWork=</span><span class="cn">TRUE</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>pedsim_seg <span class="ot">&lt;-</span> <span class="fu">read_ibd</span>(pedsim_fp, <span class="at">source =</span> <span class="st">&quot;pedsim&quot;</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>pedsim_seg</span>
@@ -673,7 +979,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a><span class="co">#  9 testped1_g2-b1-i1 testped1_g2-b2-i1 5      31751157 134562539 83.7  </span></span>
 <span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a><span class="co"># 10 testped1_g2-b1-i1 testped1_g2-b2-i1 5     167835827 168425497  1.15 </span></span>
 <span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a><span class="co"># # … with 122 more rows</span></span></code></pre></div>
-<p>Notably, <code>ped-sim</code> differentiates IBD1 and IBD2 segments. Given that IBD1 and IBD2 segments are weighted differently in kinship calculation, this should be accounted for in processing. In the example below the shared IBD is calculated separately for IBD1 and IBD2 with <code>type=&quot;IBD1&quot;</code> and <code>type=&quot;IBD2&quot;</code> respectively. You can then combine those results and sum the IBD1 and IBD2 kinship coefficients to get the overall kinship coefficient:</p>
+<p>Notably, <code>ped-sim</code> differentiates IBD1 and IBD2 segments.
+Given that IBD1 and IBD2 segments are weighted differently in kinship
+calculation, this should be accounted for in processing. In the example
+below the shared IBD is calculated separately for IBD1 and IBD2 with
+<code>type=&quot;IBD1&quot;</code> and <code>type=&quot;IBD2&quot;</code> respectively. You
+can then combine those results and sum the IBD1 and IBD2 kinship
+coefficients to get the overall kinship coefficient:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ibd1_dat <span class="ot">&lt;-</span> <span class="fu">ibd2kin</span>(<span class="at">.ibd_data=</span>pedsim_seg<span class="sc">$</span>IBD1, <span class="at">.map=</span>gmap, <span class="at">type=</span><span class="st">&quot;IBD1&quot;</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ibd2_dat <span class="ot">&lt;-</span> <span class="fu">ibd2kin</span>(<span class="at">.ibd_data=</span>pedsim_seg<span class="sc">$</span>IBD2, <span class="at">.map=</span>gmap, <span class="at">type=</span><span class="st">&quot;IBD2&quot;</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(ibd1_dat,ibd2_dat) <span class="sc">%&gt;%</span></span>
@@ -694,12 +1006,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 10 testped1_g2-b1-i1 testped1_g3-b1-i1   0.245</span></span>
 <span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="co"># # … with 38 more rows</span></span></code></pre></div>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
 <li id="fn1"><p><a href="https://www.cog-genomics.org/plink/1.9/formats#fam" class="uri">https://www.cog-genomics.org/plink/1.9/formats#fam</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>Sinnwell, Jason P., Terry M. Therneau, and Daniel J. Schaid. “The kinship2 R package for pedigree data.” <em>Human heredity</em> 78.2 (2014): 91-93.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>Manichaikul, A., Mychaleckyj, J. C., Rich, S. S., Daly, K., Sale, M., &amp; Chen, W. M. (2010). Robust relationship inference in genome-wide association studies. Bioinformatics (Oxford, England), 26(22), 2867–2873. <a href="https://doi.org/10.1093/bioinformatics/btq559" class="uri">https://doi.org/10.1093/bioinformatics/btq559</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Sinnwell, Jason P., Terry M. Therneau, and Daniel J.
+Schaid. “The kinship2 R package for pedigree data.” <em>Human
+heredity</em> 78.2 (2014): 91-93.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Manichaikul, A., Mychaleckyj, J. C., Rich, S. S., Daly,
+K., Sale, M., &amp; Chen, W. M. (2010). Robust relationship inference in
+genome-wide association studies. Bioinformatics (Oxford, England),
+26(22), 2867–2873. <a href="https://doi.org/10.1093/bioinformatics/btq559" class="uri">https://doi.org/10.1093/bioinformatics/btq559</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 <li id="fn4"><p><a href="https://github.com/m-clark/confusionMatrix" class="uri">https://github.com/m-clark/confusionMatrix</a><a href="#fnref4" class="footnote-back">↩︎</a></p></li>
 <li id="fn5"><p><a href="https://github.com/browning-lab/hap-ibd#output-files" class="uri">https://github.com/browning-lab/hap-ibd#output-files</a><a href="#fnref5" class="footnote-back">↩︎</a></p></li>
 <li id="fn6"><p><a href="https://github.com/williamslab/ped-sim#output-ibd-segments-file" class="uri">https://github.com/williamslab/ped-sim#output-ibd-segments-file</a><a href="#fnref6" class="footnote-back">↩︎</a></p></li>
